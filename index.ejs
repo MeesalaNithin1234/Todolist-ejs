@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-DoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+
+
+</head>    
+<body>
+    <div id="bubbles"></div> <div id="bubbles2"></div> <div id="bubbles3"></div> 
+    <h1>📖To-Do List📖</h1>
+    <br><br><br>
+    
+        <h3><%= todayday %></h3>
+        <div class="main1">
+    
+        <ul>
+            <h2>✍️Todays Tasks✍️</h2>
+            <br>
+         <%  for(i=0;i<newListItems.length; i++){  %>
+        <li> <input type="checkbox" id="item<%= i %>" class="task-checkbox">
+            <label for="item<%= i %>"><%= newListItems[i] %></label>
+        </li>
+        <%} %>
+        </ul>
+    </div>
+<form action="/" method="post">
+        <input type="text" name="newItem" autocomplete="off">
+        <button  class= "btn" type="submit"> Add</button>
+
+    </form>
+
+
+</ul>
+
+        
+    </div>
+    <script>
+        let bubleArr = []; document.addEventListener("mousemove", (e) => { let bubles = document.createElement("bubles"); let x = e.pageX; let y = e.pageY; let size = Math.random() * 60; bubles.style.width = 1 + size + "px"; bubles.style.height = 1 + size + "px"; bubles.style.left = x - size / 2 + "px"; bubles.style.top = y - size / 2 + "px"; document.body.appendChild(bubles); setTimeout(function () { bubles.remove(); console.log("tu sam"); }, 5000); }); 
+        const checkboxes = document.querySelectorAll('.task-checkbox');
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        const label = this.nextElementSibling; // Get the associated label
+        if (this.checked) {
+            // Checkbox is checked, add the "completed" class
+            label.classList.add('completed');
+        } else {
+            // Checkbox is unchecked, remove the "completed" class
+            label.classList.remove('completed');
+        }
+    });
+});
+    </script>
+</body>
+</html>
